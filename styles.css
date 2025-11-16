@@ -1,0 +1,239 @@
+:root {
+    --color-principal: #2c3e50; 
+    
+/* modo claro por defecto */
+    --color-fondo-app: #f4f4f4; 
+    --color-fondo-body: #ffffff;
+    --color-texto-principal: #333;
+    --color-texto-secundario: #888;
+    --color-borde-divisor: #ddd;
+    --color-fondo-tarjeta: #ffffff;
+    --color-borde-tarjeta: #ccc;
+    --color-fondo-input: #f0f0f0; 
+}
+
+/* modo oscuro */
+body.dark-mode {
+    --color-fondo-app: #121212;
+    --color-fondo-body: #1e1e1e;
+    --color-texto-principal: #e0e0e0;
+    --color-texto-secundario: #b3b3b3;
+    --color-borde-divisor: #3a3a3a;
+    --color-fondo-tarjeta: #2c2c2c;
+    --color-borde-tarjeta: #555;
+    --color-fondo-input: #333;
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo-app);
+    color: var(--color-texto-principal);
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+main {
+    width: 100%;
+    background-color: var(--color-fondo-body);
+}
+
+section {
+    padding: 25px;
+}
+
+header {
+    background-color: var(--color-principal);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5em;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.8em;
+    color: var(--color-texto-secundario);
+    border-top: 1px solid var(--color-borde-divisor);
+    background-color: var(--color-fondo-input);
+}
+
+/* botón de cambiar tema */
+#theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.perfil-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.perfil-info h2 {
+    font-size: 2em;
+    font-weight: normal;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.datos-personales {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px; 
+}
+
+.datos-personales dt { /* <dt> es la etiqueta ej. nombre */
+    font-size: 1.2em;
+    color: var(--color-texto-secundario);
+    border-bottom: 1px dashed var(--color-borde-divisor);
+    padding-bottom: 5px;
+}
+
+.datos-personales dd { /* <dd> es el valor  */
+    font-weight: bold;
+    color: var(--color-texto-principal);
+    border-bottom: 1px dashed var(--color-borde-divisor);
+    padding-bottom: 5px;
+}
+
+.proyectos-container {
+    border-top: 1px solid var(--color-borde-divisor);
+    display: flex; /*  para poner las tarjetas una al lado de la otra */
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.proyecto-card {
+    flex: 1; /* hace q las 3 tarjetas ocupen el mismo espacio */
+    min-width: 0; 
+    border: 1px solid var(--color-borde-tarjeta);
+    border-radius: 6px;
+    overflow: hidden; /* para q la imagen no se salga de los bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s; /* efecto al pasar el mouse */
+}
+
+.proyecto-card:hover {
+    transform: translateY(-5px); /* se eleva un poquito */
+}
+
+.proyecto-img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+.proyecto-info {
+    padding: 15px;
+    background-color: var(--color-fondo-tarjeta);}
+
+.proyecto-info h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.proyecto-links {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.9em;
+}
+
+.proyecto-card a {
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.proyecto-card a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+
+@media (max-width: 700px) {
+    
+    /* en móvil los datos pasan a 1 sola columna */
+    .datos-personales {
+        grid-template-columns: 1fr;
+    }
+
+    /* en móvil los proyectos se apilan uno sobre otro */
+    .proyectos-container {
+        flex-direction: column; 
+    }
+
+    /* en móvil el perfil se centra */
+    .perfil-info {
+        flex-direction: column; 
+        text-align: center;
+    }
+
+    .avatar {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
+
+/* --- proyecto 1: SIMPSONS --- */
+#proyecto-simpsons .proyecto-info {
+    background-color: #fff8c6; 
+}
+#proyecto-simpsons h3 a {
+    color: #bfa600;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+
+}
+#proyecto-simpsons .proyecto-links a {
+    color: #bfa600;
+    font-weight: bold;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+/* --- proyecto 2: ZEPHIR --- */
+#proyecto-zephir .proyecto-info {
+    background-color: #f7e4e4; 
+}
+#proyecto-zephir h3 a {
+    color: #9E266E;
+    font-family: 'Inknut Antiqua', 'georgia', serif;
+}
+#proyecto-zephir .proyecto-links a {
+    color: #9E266E; 
+    font-family: 'Inknut Antiqua', 'georgia', serif;
+}
+
+/* --- proyecto 3: GALERIA --- */
+#proyecto-galeria .proyecto-info {
+    background-color: rgba(56, 189, 248, .4);
+}
+#proyecto-galeria h3 a {
+    color: #475569; 
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+#proyecto-galeria .proyecto-links a {
+    color: #475569;
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
